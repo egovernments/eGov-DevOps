@@ -1,10 +1,10 @@
 #!/bin/bash
 #Start Postgres
-/etc/init.d/postgresql restart
+/etc/init.d/postgresql start
 #Start Elastic Search
 $1/elasticsearch-1.7.1/bin/elasticsearch -d
 #Start Redis
-/etc/init.d/redis-server restart
+/etc/init.d/redis-server start
 #Build And Deploy
 #git --git-dir=$1/eGov-repo/.git stash && 
 mvn clean install -f $1/eGov-repo/egov/pom.xml

@@ -24,7 +24,7 @@ RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
 RUN /etc/init.d/postgresql restart && sudo -u postgres psql --command "alter user postgres with password 'postgres';"
 #psql -h localhost -U postgres --no-password --command "alter user postgres with password 'postgres';"
 # Expose the PostgreSQL port
-CMD [ "/etc/init.d/postgresql", "restart" ]
+#CMD [ "/etc/init.d/postgresql", "restart" ]
 
 # Install JDK 
 RUN wget -O ${HOME_PATH}/jdk-8u66-linux-x64.tar.gz http://devops.egovernments.org/downloads/jdk/jdk-8u66-linux-x64.tar.gz \
@@ -35,13 +35,13 @@ ENV JAVA_HOME ${HOME_PATH}/jdk1.8.0_66
 
 # Install Redis
 RUN apt-get install redis-server -y
-CMD [ "/etc/init.d/redis-server", "restart" ]
+#CMD [ "/etc/init.d/redis-server", "restart" ]
 
 # Install ES 1.7.4
 RUN wget -O ${HOME_PATH}/elasticsearch-1.7.1.zip http://devops.egovernments.org/downloads/es/elasticsearch-1.7.1.zip \
 	&& unzip  ${HOME_PATH}/elasticsearch-1.7.1.zip -d ${HOME_PATH} \
 	&& rm ${HOME_PATH}/elasticsearch-1.7.1.zip
-CMD [ "/opt/lapp/elasticsearch-1.7.1/bin/elasticsearch", "-d" ]
+#CMD [ "/opt/lapp/elasticsearch-1.7.1/bin/elasticsearch", "-d" ]
 
 
 # Add VOLUMEs to allow backup of config, logs and databases
