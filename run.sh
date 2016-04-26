@@ -7,8 +7,11 @@ $1/elasticsearch-1.7.1/bin/elasticsearch -d
 /etc/init.d/redis-server start
 #Build And Deploy
 #git --git-dir=$1/eGov-repo/.git stash && 
-mvn clean install -f $1/eGov-repo/egov/pom.xml
+mvn clean -f $1/eGov-repo/egov/pom.xml
 git --git-dir=$1/eGov-repo/.git pull --rebase
+echo "db.url=jdbc:postgresql://localhost:5432/postgres" > $1/eGov-repo/egov/egov-config/src/test/resources/config/egov-erp-root.properties \
+	&& echo "db.username=postgres" >> $1/eGov-repo/egov/egov-config/src/test/resources/config/egov-erp-root.properties \
+	&& echo "db.password=postgres" >> $1/eGov-repo/egov/egov-config/src/test/resources/config/egov-erp-root.properties
 mvn clean install -f $1/eGov-repo/egov/pom.xml -U -s $1/eGov-repo/egov/settings.xml -Ddb.url=jdbc:postgresql://localhost:5432/postgres -Ddb.password=postgres -Ddb.user=postgres -Ddb.driver=org.postgresql.Driver -Dmaven.test.failure.ignore=false -Dmaven.javadoc.skip=true
 #copy EAR to wildfly
 if [ $? -eq 0 ]
