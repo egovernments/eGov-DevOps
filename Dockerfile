@@ -31,15 +31,12 @@ ENV JAVA_HOME ${HOME_PATH}/jdk1.8.0_66
 RUN apt-get install redis-server -y
 
 # Install ES 1.7.4
-RUN wget -O ${HOME_PATH}/elasticsearch-1.7.1.zip http://devops.egovernments.org/downloads/es/elasticsearch-1.7.1.zip \
-	&& unzip  ${HOME_PATH}/elasticsearch-1.7.1.zip -d ${HOME_PATH} \
-	&& rm ${HOME_PATH}/elasticsearch-1.7.1.zip
+RUN wget -O ${HOME_PATH}/elasticsearch-1.7.1.tar.gz http://devops.egovernments.org/downloads/es/elasticsearch-1.7.1.tar.gz \
+	&& tar -xcvf  ${HOME_PATH}/elasticsearch-1.7.1.tar.gz -C ${HOME_PATH} \
+	&& rm ${HOME_PATH}/elasticsearch-1.7.1.tar.gz
 
 #PORT expose local
 EXPOSE 5432 8080 9990 6379 9200 9300
-
-# eGov product code base
-RUN git clone -b master --single-branch https://github.com/egovernments/eGov.git ${HOME_PATH}/eGov-repo
 
 # Install WildFly
 RUN wget -O ${HOME_PATH}/wildfly-9.0.2.Final.zip http://devops.egovernments.org/downloads/wildfly/wildfly-9.0.2.Final.zip \
