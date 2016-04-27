@@ -32,7 +32,7 @@ RUN apt-get install redis-server -y
 
 # Install ES 1.7.4
 RUN wget -O ${HOME_PATH}/elasticsearch-1.7.1.tar.gz http://devops.egovernments.org/downloads/es/elasticsearch-1.7.1.tar.gz \
-	&& tar -xcvf  ${HOME_PATH}/elasticsearch-1.7.1.tar.gz -C ${HOME_PATH} \
+	&& tar -xvf  ${HOME_PATH}/elasticsearch-1.7.1.tar.gz -C ${HOME_PATH} \
 	&& rm ${HOME_PATH}/elasticsearch-1.7.1.tar.gz
 
 #PORT expose local
