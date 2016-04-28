@@ -5,8 +5,8 @@ RUN apt-get update -y \
 	&& apt-get install -y maven git
 
 # Application PATH
-RUN mkdir -p /opt/lapp
-ENV HOME_PATH /opt/lapp
+RUN mkdir -p /opt/eGov
+ENV HOME_PATH /opt/eGov
 #WORKDIR
 
 # Install Postgres
@@ -48,7 +48,7 @@ ENV WILDFLY_HOME ${HOME_PATH}/wildfly-9.0.2.Final
 ADD run.sh /run.sh
 RUN chmod 755 /run.sh
 # Entry point to start multiple services
-ENTRYPOINT [ "/run.sh", "/opt/lapp", "/opt/lapp/wildfly-9.0.2.Final" ]
-#CMD [ "/opt/lapp/wildfly-9.0.2.Final/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0" ]
+ENTRYPOINT [ "/run.sh", "/opt/eGov", "/opt/eGov/wildfly-9.0.2.Final" ]
+#CMD [ "/opt/eGov/wildfly-9.0.2.Final/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0" ]
 
 

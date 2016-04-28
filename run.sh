@@ -10,7 +10,7 @@ $1/elasticsearch-1.7.1/bin/elasticsearch -d
 git clone -b master --single-branch https://github.com/egovernments/eGov.git ${HOME_PATH}/eGov-repo
 #Build And Deploy
 mvn clean -f $1/eGov-repo/egov/pom.xml
-git --git-dir=$1/eGov-repo/.git pull --rebase
+#git --git-dir=$1/eGov-repo/.git pull --rebase
 echo "db.url=jdbc:postgresql://localhost:5432/postgres" > $1/eGov-repo/egov/egov-config/src/test/resources/config/egov-erp-root.properties \
 	&& echo "db.username=postgres" >> $1/eGov-repo/egov/egov-config/src/test/resources/config/egov-erp-root.properties \
 	&& echo "db.password=postgres" >> $1/eGov-repo/egov/egov-config/src/test/resources/config/egov-erp-root.properties
