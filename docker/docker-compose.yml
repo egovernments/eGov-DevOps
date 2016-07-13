@@ -1,0 +1,10 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.5.2
+    ports:
+      - "5432:5432"
+  reportingdb:
+    image: elasticsearch:2.3.4
+    ports:
+      - "9200:9200"
