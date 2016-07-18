@@ -1,15 +1,22 @@
 version: '2'
 services:
-  db:
+  postgres:
     build: ./db
     image: egov-db
     ports:
       - "5432:5432"
-  reportingdb:
+  elasticsearch:
     image: elasticsearch:2.3.4
+    command: elasticsearch -Des.network.host=0.0.0.0
     ports:
       - "9200:9200"
   redis:
-    image: redis:3.2.1
+    image: redis:3.2
     ports:
       - "6379:6379"
+  kibana:
+    image: kibana:4.5.3
+    links:
+      - elasticsearch
+    ports:
+      - "5601:5601"
