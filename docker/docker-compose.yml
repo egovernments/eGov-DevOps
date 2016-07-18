@@ -9,3 +9,7 @@ services:
     image: elasticsearch:2.3.4
     ports:
       - "9200:9200"
+  redis:
+    image: redis:3.2.1
+    ports:
+      - "6379:6379"
